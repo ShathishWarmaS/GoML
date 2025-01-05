@@ -1,0 +1,20 @@
+version: "3.9"
+
+services:
+  backend:
+    build:
+      context: ./Backend
+    ports:
+      - "5000:5000"  # Expose Flask backend on port 5000
+    volumes:
+      - ./Backend:/app  # Map the local backend directory to the container
+    environment:
+      FLASK_ENV: development  # Set Flask environment variable
+
+  frontend:
+    build:
+      context: ./Frontend
+    ports:
+      - "8080:80"  # Serve frontend files on port 8080
+    volumes:
+      - ./Frontend:/usr/share/nginx/html  # Map the local frontend directory to NGINX

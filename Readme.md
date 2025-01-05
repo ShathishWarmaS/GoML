@@ -1,43 +1,55 @@
-Features:
-	1.	Two Players: Controlled via keyboard input.
-	2.	Scoring System: Points are awarded when the ball goes out of bounds.
-	3.	Obstacles: Two square obstacles are placed randomly on the field. The ball will bounce off these obstacles if it collides with them.
+# Ping Pong Game
 
+A simple two-player ping pong game where players can control paddles and try to score points. The game includes obstacles that cause the ball to bounce.
 
-Steps:
-	1.	Paddle Movement: Each player controls their paddle using specific keys.
-	2.	Ball Movement: The ball moves across the screen, bouncing off walls and paddles.
-	3.	Score: Points are awarded when the ball goes out of bounds.
-	4.	Obstacles: Two square obstacles are placed randomly in the game area. The ball will bounce off these obstacles if it collides.
+## Setup Instructions
 
-Key Features Implemented:
-	1.	Obstacles: Two obstacles are placed randomly within the game field. The ball’s movement is checked for collisions with the obstacles. When the ball collides with an obstacle, it bounces off in the opposite direction.
-	2.	Ball Movement: The ball is updated every frame, and its position is checked for collisions with walls, paddles, and obstacles.
-	3.	Score System: The score is updated when the ball goes out of bounds, and the ball is reset to the center of the screen.
+1. Clone the repository to your local machine:
 
+    ```bash
+    git clone https://github.com/ShathishWarmaS/GoML.git
+    ```
 
-Summary:
-	•	Obstacles: Two obstacles are placed randomly at the start of the game and don’t overlap with the ball’s starting position.
-	•	Ball Bouncing: The ball will bounce off the obstacles, paddles, and walls.
-	•	Scoring: A point is awarded when the ball goes out of bounds.
-	•	Two-Player Control: Player 1 controls their paddle with the “ArrowUp” and “ArrowDown” keys. Player 2 controls their paddle with a similar setup (not implemented in the frontend for simplicity).
+2. Install the required dependencies:
 
-Key Changes:
-	1.	Player 1’s Controls: Arrow keys (ArrowUp and ArrowDown).
-	2.	Player 2’s Controls: W (up) and S (down).
-	3.	Paddle Movement Update: Both paddles are now controlled independently by Player 1 and Player 2.
+    - For the backend, this game uses Flask and WebSocket:
+      ```bash
+      pip install flask websockets
+      ```
 
-Explanation of Changes:
-	1.	Player 1: Still uses the ArrowUp and ArrowDown keys to move their paddle.
-	2.	Player 2: Now uses the W key to move up and the S key to move down.
-	3.	Both paddles update: The paddle positions are sent to the backend whenever the user presses a key, and the backend updates the game state accordingly.
+3. To run the game locally, run the following command in your project directory:
 
-Summary of Controls:
-	•	Player 1:
-	•	Up: Arrow Up (ArrowUp)
-	•	Down: Arrow Down (ArrowDown)
-	•	Player 2:
-	•	Up: W
-	•	Down: S
+    ```bash
+    python app.py
+    ```
 
-Now, both Player 1 and Player 2 can control their paddles independently. Player 1 uses the ArrowUp and ArrowDown keys, while Player 2 uses W and S.# GoML
+4. Open two browser tabs and navigate to:
+    ```bash
+    http://localhost:5000
+    ```
+
+    The game will start, and you can control paddles using the keyboard.
+
+## How to Run the Game
+
+1. The game will automatically start once the server is running.
+2. Players can control:
+    - **Player 1**: Arrow Up and Arrow Down keys.
+    - **Player 2**: `W` (up) and `S` (down) keys.
+3. The game will start with random obstacles. The first player to score 5 points wins.
+
+## Technical Choices
+
+- **Backend**: Flask (for serving the frontend and WebSocket communication).
+- **Frontend**: HTML5 Canvas for drawing the game state and WebSocket for real-time updates.
+- **WebSocket**: Used to send paddle movements and game updates between the server and client for smooth real-time interactions.
+
+## Known Limitations
+
+- Minor bugs might exist, such as potential paddle overshooting the boundaries (depending on game speed).
+- The game may not handle reconnections gracefully if a player disconnects.
+- Only basic collision detection is implemented for obstacles.
+
+## AI Assistance
+
+- The core functionality, including game state updates, ball movement, and paddle control, was implemented with AI assistance to help structure the game logic and WebSocket communication.
